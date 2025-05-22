@@ -1,0 +1,71 @@
+<div class="container">
+  <header>
+    <h2>Lista de Tarefas</h2>
+  </header>
+
+  <div class="busca">
+    <input [(ngModel)]="filtroBusca" placeholder="Buscar por descrição">
+    <input [(ngModel)]="filtroData" type="date">
+    <select [(ngModel)]="filtroPrioridade">
+      <option value="">Todas as Prioridades</option>
+      <option value="1">Baixa</option>
+      <option value="2">Média</option>
+      <option value="3">Alta</option>
+    </select>
+    <button class="btnLimparFiltros" (click)="limparFiltros()">Limpar filtros</button>
+  </div>
+
+  <span>
+    <button class="btnAddTarefa" (click)="abrirModal()">Adicionar Tarefa</button>
+  </span>
+
+  <div class="tarefas">
+    <table>
+      <tr>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Prioridade</th>
+        <th>Status</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+      </tr>
+      <tr *ngFor="let tarefa of tarefasFiltradas">
+        <td><strong>{{ tarefa.descricao }}</strong></td>
+        <td>{{ tarefa.data | date:'dd/MM/yyyy HH:mm' }}</td>
+        <td>{{ getPrioridadeTexto(tarefa.prioridade) }}</td>
+        <td>
+          <span [ngClass]="{'status-concluida': tarefa.concluida, 'status-aberto': !tarefa.concluida}">
+            {{ tarefa.concluida ? 'Concluída' : 'Em Aberto' }}
+          </span>
+        </td>
+        <td><button (click)="abrirModal(true, tarefa)">Editar</button></td>
+        <td><button (click)="deletarTarefa(tarefa.id)">Excluir</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="modalAberto">
+    <div class="modal-content">
+      <h2 *ngIf="!modoEdicao">Nova Tarefa</h2>
+      <h2 *ngIf="modoEdicao">Editar Tarefa</h2>
+
+      <form (ngSubmit)="salvarTarefa()">
+        <input [(ngModel)]="novaTarefa.descricao" name="descricao" placeholder="Descrição" required>
+        <input [(ngModel)]="novaTarefa.data" name="data" type="datetime-local" required>
+        <select [(ngModel)]="novaTarefa.prioridade" name="prioridade" required>
+          <option [value]="1">Baixa</option>
+          <option [value]="2">Média</option>
+          <option [value]="3">Alta</option>
+        </select>
+        <label>
+          Concluída:
+          <input [(ngModel)]="novaTarefa.concluida" name="concluida" type="checkbox">
+        </label>
+
+        <button type="submit">{{ modoEdicao ? 'Salvar' : 'Adicionar' }}</button>
+        <button type="button" (click)="fecharModal()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>

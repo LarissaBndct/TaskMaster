@@ -1,0 +1,205 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Container principal */
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Busca e filtros */
+.busca {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.busca input,
+.busca select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Botão de adicionar tarefa */
+.btnAddTarefa {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnAddTarefa:hover {
+  background-color: #45a049;
+}
+
+/* Botão limpar filtros */
+.btnLimparFiltros {
+  padding: 8px 12px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnLimparFiltros:hover {
+  background-color: #d32f2f;
+}
+
+/* Tabela de tarefas */
+.tarefas table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: fixed;
+}
+
+.tarefas th, .tarefas td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* Ajuste das colunas */
+.tarefas th:nth-child(1),
+.tarefas td:nth-child(1) {
+  width: 40%;
+  text-align: left;
+}
+
+.tarefas th:nth-child(2),
+.tarefas td:nth-child(2),
+.tarefas th:nth-child(3),
+.tarefas td:nth-child(3) {
+  width: 15%;
+}
+
+.tarefas th:nth-child(4),
+.tarefas td:nth-child(4),
+.tarefas th:nth-child(5),
+.tarefas td:nth-child(5),
+.tarefas th:nth-child(6),
+.tarefas td:nth-child(6) {
+  width: 10%;
+}
+
+/* Hover na tabela */
+.tarefas tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Botões de ação */
+.tarefas button {
+  padding: 6px 10px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tarefas button:hover {
+  background-color: #1976D2;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Conteúdo do modal */
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Formulário do modal */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-content button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+/* Cancelar botão no modal */
+.modal-content button[type="button"] {
+  background-color: #f44336;
+}
+
+.modal-content button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+.status-concluida {
+  color: green;
+  font-weight: bold;
+}
+
+.status-aberto {
+  color: orange;
+  font-weight: bold;
+}
